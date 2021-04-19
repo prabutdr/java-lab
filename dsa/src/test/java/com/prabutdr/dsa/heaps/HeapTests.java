@@ -99,10 +99,10 @@ public class HeapTests {
 	
 	private static Stream<Arguments> offerOnMaxHeap() {
 		return Stream.of(
-			Arguments.of(new Integer[][] {{10, 10}}),
-			Arguments.of(new Integer[][] {{10, 10}, {20, 20}}),
-			Arguments.of(new Integer[][] {{5, 5}, {10, 10}, {20, 20}, {6, 20}}),
-			Arguments.of(new Integer[][] {{30, 30}, {20, 30}, {10, 30}})
+			Arguments.of((Object)new Integer[][] {{10, 10}}),
+			Arguments.of((Object)new Integer[][] {{10, 10}, {20, 20}}),
+			Arguments.of((Object)new Integer[][] {{5, 5}, {10, 10}, {20, 20}, {6, 20}}),
+			Arguments.of((Object)new Integer[][] {{30, 30}, {20, 30}, {10, 30}})
 		);
 	}
 	
@@ -119,10 +119,10 @@ public class HeapTests {
 	
 	private static Stream<Arguments> offerOnMinHeap() {
 		return Stream.of(
-			Arguments.of(new Integer[][] {{10, 10}}),
-			Arguments.of(new Integer[][] {{10, 10}, {20, 10}}),
-			Arguments.of(new Integer[][] {{5, 5}, {10, 5}, {20, 5}, {3, 3}}),
-			Arguments.of(new Integer[][] {{30, 30}, {20, 20}, {10, 10}})
+			Arguments.of((Object)new Integer[][] {{10, 10}}),
+			Arguments.of((Object)new Integer[][] {{10, 10}, {20, 10}}),
+			Arguments.of((Object)new Integer[][] {{5, 5}, {10, 5}, {20, 5}, {3, 3}}),
+			Arguments.of((Object)new Integer[][] {{30, 30}, {20, 20}, {10, 10}})
 		);
 	}
 	

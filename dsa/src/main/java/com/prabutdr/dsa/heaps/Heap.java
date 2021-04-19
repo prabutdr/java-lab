@@ -13,11 +13,11 @@ public class Heap<T extends Comparable<T>> {
 		MIN_HEAP, MAX_HEAP;
 	}
 
-	public Heap() {
+	private Heap() {
 		this(HeapType.MAX_HEAP);
 	}
 
-	public Heap(HeapType type) {
+	private Heap(HeapType type) {
 		super();
 		this.type = type;
 		this.values = new ArrayList<>();
@@ -122,7 +122,7 @@ public class Heap<T extends Comparable<T>> {
 	public static <U extends Comparable<U>> Heap<U> build(HeapType type, U... elements) {
 		Heap<U> heap = new Heap<>(type);
 		heap.values.addAll(Arrays.asList(elements));
-		for (int i = 0; i < heap.size() / 2; i++) {
+		for (int i = heap.size() / 2; i >= 0; i--) {
 			heap.perculateDown(i);
 		}
 		return heap;
