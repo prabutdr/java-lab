@@ -104,15 +104,24 @@ public class Heap<T extends Comparable<T>> {
 	public Optional<T> poll() {
 		Optional<T> root = peek();
 		if (!root.isEmpty()) {
-			if (this.size() > 1) {
-				this.values.set(0, this.values.get(this.size() - 1));
-			}
-			this.values.remove(this.size() - 1);
-			if (this.size() > 1) {
-				this.perculateDown(0);
-			}
+			this.removeAt(0);
 		}
 		return root;
+	}
+	
+	public void removeAt(int index) {
+		if (index < 0 || index >= this.size()) {
+			return;
+		}
+		
+		int lastIndex = this.size() - 1;
+		if (index != lastIndex) {
+			this.values.set(index, this.values.get(lastIndex));
+		}
+		this.values.remove(lastIndex);
+		if (this.size() > 1) {
+			this.perculateDown(index);
+		}
 	}
 	
 	public Collection<T> getValues() {

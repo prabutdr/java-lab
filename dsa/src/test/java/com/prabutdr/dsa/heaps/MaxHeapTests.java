@@ -88,4 +88,23 @@ public class MaxHeapTests {
 		);
 	}
 	
+	@ParameterizedTest
+	@MethodSource
+	public void removeAtShouldDeleteItemAtGivenIndex(Integer[] values, int index, Integer expectedPeek) {
+		Heap<Integer> heap = Heap.build(HeapType.MAX_HEAP, values);
+		heap.removeAt(index);
+		assertEquals(expectedPeek, heap.peek().orElse(null));
+	}
+
+	private static Stream<Arguments> removeAtShouldDeleteItemAtGivenIndex() {
+		return Stream.of(
+			Arguments.of(new Integer[] {}, 0, null),
+			Arguments.of(new Integer[] {10}, 0, null),
+			Arguments.of(new Integer[] {10, 20}, 0, 10),
+			Arguments.of(new Integer[] {5, 10, 20}, 1, 20),
+			Arguments.of(new Integer[] {30, 20, 10}, 2, 30),
+			Arguments.of(new Integer[] {30, 20, 10, 35}, 3, 35)
+		);
+	}
+	
 }
