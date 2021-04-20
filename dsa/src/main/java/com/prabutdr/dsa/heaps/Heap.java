@@ -2,6 +2,8 @@ package com.prabutdr.dsa.heaps;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -111,6 +113,42 @@ public class Heap<T extends Comparable<T>> {
 			}
 		}
 		return root;
+	}
+	
+	public Collection<T> getValues() {
+		return Collections.unmodifiableCollection(values);
+	}
+	
+	public Optional<T> findMax() {
+		if (this.type == HeapType.MAX_HEAP || this.size() == 0) {
+			// pick directly on max heap
+			return this.peek();
+		}
+		
+		// Check only on leaf nodes on min heap
+		T max = this.peek().get();
+		for (int i = this.size() / 2; i < this.size(); i++) {
+			if (max.compareTo(values.get(i)) < 0) {
+				max = values.get(i);
+			}
+		}
+		return Optional.of(max);
+	}
+
+	public Optional<T> findMin() {
+		if (this.type == HeapType.MIN_HEAP || this.size() == 0) {
+			// pick directly on min heap
+			return this.peek();
+		}
+		
+		// Check only on leaf nodes on max heap
+		T min = this.peek().get();
+		for (int i = this.size() / 2; i < this.size(); i++) {
+			if (min.compareTo(values.get(i)) > 0) {
+				min = values.get(i);
+			}
+		}
+		return Optional.of(min);
 	}
 
 	@Override
