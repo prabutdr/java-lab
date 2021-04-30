@@ -21,7 +21,7 @@ public class HeapSortTests {
 	}
 	
 	public static Stream<Arguments> sortShouldOrderElements() {
-		return Stream.of(
+		return Stream.of( 
 			Arguments.of(new Integer[] {10}, new Integer[] {10}),
 			Arguments.of(new Integer[] {10, 5}, new Integer[] {5, 10}),
 			Arguments.of(new Integer[] {10, 1, 5, 6}, new Integer[] {1, 5, 6, 10}),
