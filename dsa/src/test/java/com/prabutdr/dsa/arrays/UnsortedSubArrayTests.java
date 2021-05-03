@@ -16,13 +16,13 @@ public class UnsortedSubArrayTests {
 	
 	@ParameterizedTest
 	@MethodSource
-	public void sortShouldOrderElements(int[] values, int[] expectedValues) {
+	public void shouldReturnAppropriateStartAndEndIndex(int[] values, int[] expectedValues) {
 		int[] result = UnsortedSubArray.findUnsortedPortion(values);
 		assertEquals(expectedValues[0], result[0]);
 		assertEquals(expectedValues[1], result[1]);
 	}
 	
-	public static Stream<Arguments> sortShouldOrderElements() {
+	public static Stream<Arguments> shouldReturnAppropriateStartAndEndIndex() {
 		return Stream.of( 
 			Arguments.of(null, new int[] {0, 0}),
 			Arguments.of(new int[] {}, new int[] {0, 0}),
